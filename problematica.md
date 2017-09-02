@@ -1,13 +1,17 @@
-Definição
+## Definição
+
 O trabalho consiste em criar uma aplicação Cliente/Servidor para que seja possível que os clientes joguem o jogo da Forca Gaudéria.
 
-Servidor
+## Servidor
+
 O servidor deverá:
 
 Carregar um arquivo contendo palavras e dicas
 Aguardar requisições dos clientes na porta 8765
 Tratar as requisições de acordo com o protocolo definido abaixo
-Cliente
+
+## Cliente
+
 O cliente deverá:
 
 Solicitar ao usuário o endereço IP e a porta do Servidor ao qual ele deve se conectar
@@ -24,42 +28,49 @@ Protocolo de Comunicação
 Buscar palavra/frase
 Cliente envia comando BUSCARPALAVRA. O servidor escolhe uma palavra da lista de forma randômica e devolve para o cliente em formato JSON.
 
-Requisição:
+*Requisição:*
 
-BUSCARPALAVRA
+**BUSCARPALAVRA**
 
-Resposta:
+*Resposta:*
 
+```json
 {
 	"palavra" : "Bah",
 	"dica" : "Interjeição que vale para quase tudo, dependendo da entonação, pode ser usado como surpresa, rejeição, aprovação, admiração."
 }
-Encerrar Jogo
+```
+
+### Encerrar Jogo
 Cliente envia comando ENCERRARJOGO juntamente com o usuário, chave, quantidade de vitórias e derrotas. O servidor verifica se o usuário/chave já está cadastrado. Caso esteja, soma a quantidade de vitórias/derrotas informadas. Caso não esteja, cria o registro correspondente. Importante: Estes dados devem ser persistidos em arquivo. O servidor deve responder um JSON com o total de vitórias/derrotas do usuário (já somadas com as que tinha anteriormente)
 
-Requisição:
+*Requisição:*
 
-ENCERRARJOGO tales chavetales 10 2
+**ENCERRARJOGO tales chavetales 10 2**
 
-Resposta:
+*Resposta:*
 
+```json
 {
 	"usuario" : "tales",
 	"vitorias" : 150,
 	"derrotas" : 10
 }
-Buscar Ranking
+```
+
+### Buscar Ranking
 Cliente envia comando BUSCARRANKING. O servidor retorna o ranking com todos os usuário cadastrados no sistema, ordenados decrescentemente pelo percentual de vitórias do usuário.
 
-Requisição:
+*Requisição:*
 
-BUSCARRANKING
+**BUSCARRANKING**
 
-Resposta:
+*Resposta:*
 
-{ 
+```json
+{
 	"ranking" : [
-		{ 
+		{
 			"usuario" : "tales",
 			"vitorias" : 150,
 			"derrotas" : 10,
@@ -73,7 +84,10 @@ Resposta:
 		}
 	]
 }
-Importante:
+```
+
+### Importante:
+
 O servidor deve poder funcionar com qualquer cliente que saiba conversar o protocolo definido acima.
 O cliente deve poder funcionar com qualquer servidor que saiba conversar o protocolo definido acima.
 O servidor deverá ser capaz de aceitar requisições de múltiplos clientes ao mesmo tempo.
