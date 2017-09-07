@@ -86,7 +86,7 @@ Cliente envia comando BUSCARRANKING. O servidor retorna o ranking com todos os u
 }
 ```
 
-### Importante:
+## Importante:
 
 1. O servidor deve poder funcionar com qualquer cliente que saiba conversar o protocolo definido acima.
 2. O cliente deve poder funcionar com qualquer servidor que saiba conversar o protocolo definido acima.
